@@ -9,6 +9,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +22,23 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "gamesInfo";
     // Contacts table name
     private static final String TABLE_GAMES = "games";
+
+    public static String getKeyId() {
+        return KEY_ID;
+    }
+
+    public static String getKeyName() {
+        return KEY_NAME;
+    }
+    public static String getKeyGRy() {
+        return KEY_G_RY;
+    }
+
     // games Table Columns names
-    private static final String KEY_ID = "id";
+    private static final String KEY_ID = "_id";
     private static final String KEY_NAME = "name";
     private static final String KEY_G_RY = "game_relase_year";
+
 
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -43,7 +58,7 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
     // Adding new game
-    public void addgame(Game game) {
+    public void addGame(Game game) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -55,7 +70,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
     // Getting one game
-    public Game getgame(int id) {
+    public Game getGame(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_GAMES, new String[]{KEY_ID,
@@ -70,7 +85,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return item;
     }
     // Getting All games
-    public List<Game> getAllgames() {
+    public List<Game> getAllGames() {
         List<Game> gameList = new ArrayList<Game>();
 // Select All Query
         String selectQuery = "SELECT * FROM " + TABLE_GAMES;
@@ -93,8 +108,14 @@ public class DBHandler extends SQLiteOpenHelper {
 // return contact list
         return gameList;
     }
+    public Cursor getAllGamesCursor(){
+        String selectQuery = "SELECT * FROM " + TABLE_GAMES;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        return cursor;
+    }
     // Getting games Count
-    public int getgamesCount() {
+    public int getGamesCount() {
         String countQuery = "SELECT * FROM " + TABLE_GAMES;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
@@ -104,7 +125,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return cursor.getCount();
     }
     // Updating a game
-    public int updategame(Game game) {
+    public int updateGame(Game game) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, game.getName());
@@ -116,10 +137,12 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // Deleting a game
-    public void deletegame(Game game) {
+    public void deleteGame(Game game) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_GAMES, KEY_ID + " = ?",
                 new String[] { String.valueOf(game.getId()) });
         db.close();
     }
+
+
 }

@@ -35,18 +35,6 @@
         android:padding="5dp" />
 
 
-    <TextView
-        android:text="Release Year:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:id="@+id/ryText"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:layout_below="@+id/vgText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,17 +44,6 @@
         android:layout_toRightOf="@+id/ryText"
         android:layout_toEndOf="@+id/ryText"
         android:layout_alignBottom="@+id/ryText" />
-
-    <TextView
-        android:text="Video Game:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/vgText"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/deleteItem" />
 
     <Button
         android:text="Add To Database"
@@ -91,17 +68,6 @@
         android:layout_toEndOf="@+id/addToDatabaseButton" />
 
     <Button
-        android:id="@+id/deleteItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="deleteItem"
-        android:text="Delete an Item"
-        android:layout_alignBaseline="@+id/editButton"
-        android:layout_alignBottom="@+id/editButton"
-        android:layout_toRightOf="@+id/editButton"
-        android:layout_toEndOf="@+id/editButton" />
-
-    <Button
         android:text="Confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -123,6 +89,56 @@
         android:layout_alignBottom="@+id/Confirm"
         android:layout_toRightOf="@+id/Confirm"
         android:layout_toEndOf="@+id/Confirm" />
+
+    <TextView
+        android:text="Release Year:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/ryText"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/vgEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Video Game:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vgText"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Display Databse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/vgText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/display"
+        android:onClick="displayDatabase" />
+
+    <Button
+        android:id="@+id/deleteItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="deleteItem"
+        android:text="Delete an Item"
+        android:layout_above="@+id/vgEditText"
+        android:layout_toRightOf="@+id/addToDatabaseButton"
+        android:layout_toEndOf="@+id/addToDatabaseButton" />
+    <ListView
+        android:id="@+id/dblist"
+        android:layout_width="match_parent"
+        android:layout_height="458dp"
+        android:layout_weight="0.75"
+        android:layout_above="@+id/dbitem"
+        android:layout_alignParentTop="true"/>
 
 
 </RelativeLayout>
