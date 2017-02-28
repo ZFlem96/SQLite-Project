@@ -29,7 +29,8 @@
         android:layout_below="@+id/textViewAddGame"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="50dp"
+        android:id="@+id/tableLayout">
 
         <TableRow
             android:layout_width="match_parent"
@@ -135,6 +136,25 @@
                 android:ems="10"
                 android:id="@+id/editTextReleaseYear" />
         </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="Current Time Spent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timeSpent"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textSize="18sp"
+                android:id="@+id/timer" />
+        </TableRow>
 
     </TableLayout>
 
@@ -143,10 +163,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonSubmit"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="156dp"
         android:textSize="14sp"
-        android:onClick="submitButtonClick" />
+        android:onClick="submitButtonClick"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/tableLayout"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

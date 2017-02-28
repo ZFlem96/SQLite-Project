@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewEditGame"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="50dp">
 
         <TableRow
@@ -134,7 +135,25 @@
                 android:ems="10"
                 android:id="@+id/editTextReleaseYear" />
         </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
+        <TextView
+            android:text="Current Time Spent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timeSpent"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="18sp"
+            android:id="@+id/timer" />
+        </TableRow>
     </TableLayout>
 
     <Button
@@ -156,7 +175,9 @@
         android:layout_alignBaseline="@+id/buttonUpdate"
         android:layout_alignBottom="@+id/buttonUpdate"
         android:layout_toEndOf="@+id/buttonUpdate"
+        android:layout_toRightOf="@+id/buttonUpdate"
         android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
         android:onClick="buttonDeleteClick" />
 
 </RelativeLayout>
