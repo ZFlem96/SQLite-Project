@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.videogamestorage.videogamestorage.dbobjects.Game;
+import com.videogamestorage.videogamestorage.orm.Time;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,7 +22,9 @@ public class AddGameActivity extends AppCompatActivity {
     EditText editTextHours;
     EditText editTextReleaseYear;
     TextView time;
-    int count=0;
+    Time timer;
+//    int count=0;
+    int secs=0, mins=0, hours=0;
     boolean stopTime = true;
     Button buttonSubmit;
 
@@ -46,8 +49,20 @@ public class AddGameActivity extends AppCompatActivity {
                     public void run()
                     {
                         if(stopTime) {
-                            time.setText(String.valueOf(count+(" (s)")));
-                            count++;
+//                            hours+"."+mins+"."secs;
+//                            time.setText(String.valueOf(count+(" (s)")));
+
+                            time.setText(hours+"."+mins+"."+secs);
+                            secs++;
+                            if(secs==60){
+                                secs = 0 ;
+                                mins++;
+                            }
+                            if(mins==60){
+                                mins = 0 ;
+                                hours++;
+                            }
+//                            count++;
                         }
                     }
                 });
@@ -60,6 +75,12 @@ public class AddGameActivity extends AppCompatActivity {
     public void submitButtonClick(View v) {
         stopTime = false;
         Game newGame = new Game();
+//        timer = new Time();
+//        timer.setTime(secs,mins,hours);
+        time.setText(hours+"."+mins+"."+secs);
+        newGame.setTime(secs,mins,hours);
+//        time.setText(timer.getTime());
+//        time.setText(newGame.getTime().getTime());
         newGame.setVideoGame(editTextVideoGame.getText().toString());
         newGame.setComplete(checkBoxCompletion.isChecked());
         newGame.setProgress(Double.parseDouble(editTextProgress.getText().toString()));
