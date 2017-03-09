@@ -16,6 +16,31 @@ public class Time {
         hours = this.hours;
         time = hours+"."+mins+"."+secs;
     }
+    public void increase(){
+//        secs++;
+//        mins++;
+//        hours++;
+        secs++;
+        if(secs==60){
+            secs = 0 ;
+            mins++;
+        }
+        if(mins==60){
+            mins = 0 ;
+            hours++;
+        }
+        time = hours+"."+mins+"."+secs;
+    }
+    public int getSecs(){
+        return secs;
+    }
+
+    public int getHours() {
+        return hours;
+    }
+    public int getMins(){
+    return mins;
+    }
     public void setTime(int secs, int mins, int hours){
         if(secs==60){
             this.secs = 0 ;

@@ -24,26 +24,33 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        buttonAddGame = (Button) findViewById(R.id.buttonAddGame);
-        listViewGames = (ListView) findViewById(R.id.listViewGames);
-        gameArrayAdapter = new ArrayAdapter<Game>(this, android.R.layout.simple_list_item_1, gameList);
-        listViewGames.setAdapter(gameArrayAdapter);
-        Iterator<Game> iterator = Game.findAll(Game.class);
-        while (iterator.hasNext()) {
-            Game game = iterator.next();
-            gameArrayAdapter.add(game);
-        }
-        final MainActivity self = this;
-        listViewGames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(self, EditGameActivity.class);
-                intent.putExtra("gameId", ((Game)listViewGames.getItemAtPosition(i)).getId());
-                startActivity(intent);
+        try{
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+//        Game.deleteAll(Game.class);
+            buttonAddGame = (Button) findViewById(R.id.buttonAddGame);
+            listViewGames = (ListView) findViewById(R.id.listViewGames);
+            gameArrayAdapter = new ArrayAdapter<Game>(this, android.R.layout.simple_list_item_1, gameList);
+            listViewGames.setAdapter(gameArrayAdapter);
+            Iterator<Game> iterator = Game.findAll(Game.class);
+            while (iterator.hasNext()) {
+                Game game = iterator.next();
+                gameArrayAdapter.add(game);
             }
-        });
+            final MainActivity self = this;
+            listViewGames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(self, EditGameActivity.class);
+                    intent.putExtra("gameId", ((Game)listViewGames.getItemAtPosition(i)).getId());
+                    startActivity(intent);
+                }
+            });
+        }catch(Exception e){
+
+        }
+
+
     }
 
 
@@ -54,12 +61,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        super.onResume();
-        gameArrayAdapter.clear();
-        Iterator<Game> iterator = Game.findAll(Game.class);
-        while (iterator.hasNext()) {
-            Game game = iterator.next();
-            gameArrayAdapter.add(game);
+        try{
+            super.onResume();
+            gameArrayAdapter.clear();
+            Iterator<Game> iterator = Game.findAll(Game.class);
+            while (iterator.hasNext()) {
+                Game game = iterator.next();
+                gameArrayAdapter.add(game);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
     }
 }
