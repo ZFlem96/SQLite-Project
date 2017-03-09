@@ -79,8 +79,8 @@ public class AddGameActivity extends AppCompatActivity {
 //        timer.setTime(secs,mins,hours);
         time.setText(hours+"."+mins+"."+secs);
         newGame.setTime(secs,mins,hours);
-//        time.setText(timer.getTime());
-//        time.setText(newGame.getTime().getTime());
+//        time.setText(timer.getTimeNumber());
+//        time.setText(newGame.getTimeNumber().getTimeNumber());
         newGame.setVideoGame(editTextVideoGame.getText().toString());
         newGame.setComplete(checkBoxCompletion.isChecked());
         newGame.setProgress(Double.parseDouble(editTextProgress.getText().toString()));
